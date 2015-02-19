@@ -5,6 +5,7 @@ A Chess Game, endorses many OOD concepts
 
 ##Unavailable Features:
 -----------------------
+* Game State Checking
 * Castling (Rook - King Switch)
 * En Passant Capture
 * Artificial Intelligence
