@@ -5,7 +5,8 @@ A Chess Game, endorses many OOD concepts
 
 ##Unavailable Features:
 -----------------------
-* Rook - King Switch
+* Castling (Rook - King Switch)
+* En Passant Capture
 * Artificial Intelligence
 * Game Serialization for Save/Load
 * A better Design (sometimes)
