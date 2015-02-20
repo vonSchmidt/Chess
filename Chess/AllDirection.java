@@ -2,7 +2,10 @@ package Chess;
 
 public class AllDirection extends Direction {
 
-    @Override
+	private static final long serialVersionUID = -5321646452886565611L;
+
+
+	@Override
     public boolean check_validity(Move m, Color c) {
         return true;
     }

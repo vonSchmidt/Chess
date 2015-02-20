@@ -1,6 +1,10 @@
 package Chess;
 
-public class SingleStepDisplacement implements Displacement {
+import java.io.Serializable;
+
+public class SingleStepDisplacement implements Displacement, Serializable {
+
+	private static final long serialVersionUID = -4725966941899362586L;
 
 	@Override
 	public boolean check_validity(Move m) {

@@ -1,7 +1,11 @@
 package Chess;
-public class GeneralMove{
 
-    private Displacement displacement;
+import java.io.Serializable;
+
+public class GeneralMove implements Serializable{
+
+	private static final long serialVersionUID = 2531833000808985025L;
+	private Displacement displacement;
     private Direction direction;
 
 

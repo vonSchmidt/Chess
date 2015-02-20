@@ -2,6 +2,8 @@ package Chess;
 
 public class PawnStraightDirection extends Direction{
 	
+	private static final long serialVersionUID = 7461369012590022051L;
+
 	@Override
 	public boolean check_validity(Move m, Color c) {
 				int dy=(m.getStart().getY()-m.getEnd().getY());

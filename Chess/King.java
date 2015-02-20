@@ -2,8 +2,8 @@ package Chess;
 
 public class King extends Piece{
 
-
-    public King(Color color){
+	private static final long serialVersionUID = -6442590757910939157L;
+	public King(Color color){
         name = "K";
         symbol = "♚";
         this.color = color;

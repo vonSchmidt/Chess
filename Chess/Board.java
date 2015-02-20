@@ -1,9 +1,12 @@
 package Chess;
 
+import java.io.Serializable;
 import java.util.Vector;
 
-public class Board{
-    private Square squares [][];
+public class Board implements Serializable{
+
+	private static final long serialVersionUID = -8536336866753177096L;
+	private Square squares [][];
     private Team white;
     private Team black;
     private String infos="";
@@ -30,7 +33,7 @@ public class Board{
 
 
     public String toString(){
-        String S="\n";
+        String S="";
 
         S+="\n"+getInfos()+"\n";
         if(!getOutList().isEmpty())

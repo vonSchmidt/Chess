@@ -3,6 +3,8 @@ package Chess;
 
 public class StraightDirection extends Direction {
 
+	private static final long serialVersionUID = -1635482375868021631L;
+
 	@Override
 	public boolean check_validity(Move m, Color c) {
 		return (m.getStart().getX()==m.getEnd().getX() || m.getStart().getY()==m.getEnd().getY());

@@ -2,8 +2,10 @@ package Chess;
 
 
 public class DiagonalDirection extends Direction{
+	
+	private static final long serialVersionUID = -6605332339276010807L;
 
-    @Override
+	@Override
     public boolean check_validity(Move m, Color c) {
         int dx=Math.abs(m.getStart().getX()-m.getEnd().getX());
         int dy=Math.abs(m.getStart().getY()-m.getEnd().getY());

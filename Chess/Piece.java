@@ -1,8 +1,11 @@
 package Chess;
 
+import java.io.Serializable;
 import java.util.Vector;
 
-public abstract class Piece{
+public abstract class Piece implements Serializable{
+
+	private static final long serialVersionUID = -574606787013779658L;
 	protected String name;
 	protected String symbol = "";
 	protected Square square;

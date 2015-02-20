@@ -2,6 +2,7 @@ package Chess;
 
 public class Pawn extends Piece {
 
+	private static final long serialVersionUID = 1055530432396175994L;
 	private boolean moved;
 	
 	public Pawn(Color color){

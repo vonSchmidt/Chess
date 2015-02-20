@@ -1,6 +1,10 @@
 package Chess;
-public class Move{
 
+import java.io.Serializable;
+
+public class Move implements Serializable{
+
+	private static final long serialVersionUID = 1425537546060149779L;
 	private Square start, end;
 
 	public Move(Square start, Square end){

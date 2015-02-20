@@ -1,10 +1,13 @@
 package Chess;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 
-public abstract class Direction{
-    protected Vector<Square> valid_UP = new Vector<Square>(),
+public abstract class Direction implements Serializable{
+
+	private static final long serialVersionUID = -6056220710896687197L;
+	protected Vector<Square> valid_UP = new Vector<Square>(),
            valid_DOWN = new Vector<Square>(),
            valid_RIGHT = new Vector<Square>(),
            valid_LEFT = new Vector<Square>(),

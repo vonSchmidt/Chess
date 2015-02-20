@@ -1,9 +1,11 @@
 package Chess;
 
+import java.io.Serializable;
 
+public class Team implements Serializable{
 
-public class Team{
-    private	Color color;
+	private static final long serialVersionUID = -5490738341767544231L;
+	private	Color color;
 	private Piece[] set=new Piece[16];
 
 	public Team(Color color){

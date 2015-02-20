@@ -3,6 +3,8 @@ package Chess;
 
 public class LshapedDirection extends Direction {
 
+	private static final long serialVersionUID = 3697027994311085508L;
+
 	@Override
 	public boolean check_validity(Move m, Color c) {
 		int dx=Math.abs(m.getStart().getX()-m.getEnd().getX());

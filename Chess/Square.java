@@ -1,7 +1,11 @@
 package Chess;
-public class Square{
 
-    private	Color color;
+import java.io.Serializable;
+
+public class Square implements Serializable{
+
+	private static final long serialVersionUID = 869257009381660454L;
+	private	Color color;
     private Piece piece_occupying;
     private int X, Y;
     public Square(int X, int Y){

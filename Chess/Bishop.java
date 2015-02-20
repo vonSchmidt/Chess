@@ -2,7 +2,9 @@ package Chess;
 
 public class Bishop extends Piece {
 
-    public Bishop(Color color){
+	private static final long serialVersionUID = -2040059264534118694L;
+
+	public Bishop(Color color){
         this.color=color;
         symbol = "♝";
         name = "B";
