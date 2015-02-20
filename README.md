@@ -1,8 +1,8 @@
 #Chess Game
 -------------
 
-A Chess Game, endorses many OOD concepts
-
+An OOP Chess Game; Endorses many OOD concepts
+Assignment for GIN314 course, at USEK
 ##Unavailable Features:
 -----------------------
 * Game State Checking
