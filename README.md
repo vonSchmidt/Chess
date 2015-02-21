@@ -1,14 +1,14 @@
 #Chess Game
 -------------
 
-An OOP Chess Game; Endorses many OOD concepts
+A Java Console Chess Game; Endorses many OOD concepts
 Assignment for GIN314 course, at USEK
 
 ##Unavailable Features:
 -----------------------
-* Game State Checking
 * Castling (Rook - King Switch)
 * En Passant Capture
+* ...
 * Artificial Intelligence
 * A better Design (sometimes)
 
