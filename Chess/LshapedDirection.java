@@ -25,4 +25,38 @@ public class LshapedDirection extends Direction {
 		//All are possible
 		return true;
 	}
+
+	@Override
+	public boolean existsThreat(Piece p, Board b) {
+		System.out.println("This is L Shaped Checking");
+		if(LShapedMove(p, b, -1, 2))
+			return true;
+		if(LShapedMove(p, b, -1, -2))
+			return true;
+		if(LShapedMove(p, b, 1, 2))
+			return true;
+		if(LShapedMove(p, b, 1, -2))
+			return true;
+		if(LShapedMove(p, b, 2, -1))
+			return true;
+		if(LShapedMove(p, b, 2, 1))
+			return true;
+		if(LShapedMove(p, b, -2, 1))
+			return true;
+		if(LShapedMove(p, b, -2, -1))
+			return true;
+		return false;
+	}
+	
+	private boolean LShapedMove(Piece p, Board b, int x, int y){
+		if(p.square.getX()+x > 7 || p.square.getY()+y > 7
+			|| 	p.square.getX()+x < 0 || p.square.getY()+y < 0
+		) 
+			return false;
+		
+		return b.getSquares()[p.square.getX()+x][p.square.getY()+y].getPiece_occupying() instanceof Knight;
+		
+	}
+	
+	
 }

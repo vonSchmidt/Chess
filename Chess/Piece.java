@@ -22,19 +22,13 @@ public abstract class Piece implements Serializable{
 			return "\033[31;44m "+ symbol +" \033[0m";
 						
 		case WHITE:
-			return "\033[34;47m " + symbol +" \033[0m";
+			return "\033[34;43m " + symbol +" \033[0m";
 					
 		default:
 			return "";
 		
 		}
 	}
-
-
-//	public GAME_STATE isInDanger(Board board, Team member) {
-//		return GAME_STATE.NOTHING;
-//	}
-
 
 	public String getSymbol() {
 		return symbol;

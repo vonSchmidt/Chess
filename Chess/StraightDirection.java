@@ -11,7 +11,7 @@ public class StraightDirection extends Direction {
 	}
 
 	@Override
-	public void getAllMoves(Piece p, Board b) {
+	protected void getAllMoves(Piece p, Board b) {
 		getUp(p, b);
 		getDown(p, b);
 		getLeft(p, b);
@@ -93,6 +93,5 @@ public class StraightDirection extends Direction {
 			return true;
 		return false;
 	}
-
 
 }

@@ -13,7 +13,7 @@ public class DiagonalDirection extends Direction{
     }
 
     @Override
-    public void getAllMoves(Piece p, Board b) {
+    protected void getAllMoves(Piece p, Board b) {
         getUpLeft(p, b);
         getDownLeft(p, b);
         getDownRight(p, b);
@@ -87,6 +87,7 @@ public class DiagonalDirection extends Direction{
             return true;
         return false;
     }
+
 
 }
 

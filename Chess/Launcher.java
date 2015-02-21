@@ -6,7 +6,6 @@ public class Launcher {
 
 
 	public static void main(String args[]) throws IOException{
-		// TODO Start checking for CSL file, then do game state checker
 		System.out.println("\n\n\t\t  Welcome to Chess!\n\t\t  -----------------");
 		System.out.println(" \tTip: Press Ctrl - D To Save The Game And " +
 				"Quit.\n \t     Press Ctrl - C To Quit Without Saving.\n");
@@ -22,8 +21,12 @@ public class Launcher {
 			System.out.println(" >> Did Not Find Game State File In Directory.");
 		}
 		try{
+			System.out.println("\n\n\t\t >> Press <Enter> To Continue ...");
+			System.in.read();
+			g.clear();
 			g.run();
 		} catch(Exception e){
+			e.printStackTrace();
 			System.out.println(" >> Saving Game State ...");
 			g.saveGame();
 			System.out.println(" [INFO] >> Successfully Saved Game State.");

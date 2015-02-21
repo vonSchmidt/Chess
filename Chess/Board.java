@@ -10,6 +10,7 @@ public class Board implements Serializable{
     private Team white;
     private Team black;
     private String infos="";
+    private String status="";
     private Vector<Piece> outList = new Vector<Piece>();
     
     public Board(){
@@ -30,12 +31,16 @@ public class Board implements Serializable{
         //black.set[0]
         return false;
     }
-
+    
+    public void setStatus(String st){
+    	status = st;
+    }
 
     public String toString(){
         String S="";
 
         S+="\n"+getInfos()+"\n";
+        S+="\n"+status+"\n";
         if(!getOutList().isEmpty())
             S+=getOutList()+"\n\n";
 
@@ -74,6 +79,7 @@ public class Board implements Serializable{
         S+="     ⎺⎺⎺⎺⎺ ⎺⎺⎺⎺⎺ ⎺⎺⎺⎺⎺ ⎺⎺⎺⎺⎺ ⎺⎺⎺⎺⎺ ⎺⎺⎺⎺⎺ ⎺⎺⎺⎺⎺ ⎺⎺⎺⎺⎺";
         S+="\n       1     2     3     4     5     6     7     8\n";
         setInfos("");
+        setStatus("");
         return S;
     }
 

@@ -23,6 +23,14 @@ public class Square implements Serializable{
             return Color.WHITE;
         else return Color.BLACK;
     }
+    
+    public void setHint(){
+    	this.color = Color.HINT;
+    }
+    
+    public void setNormal(){
+    	this.color = getColor();
+    }
 
     public String toString(){
         return color.toString();
