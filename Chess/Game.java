@@ -2,6 +2,7 @@ package Chess;
 import java.io.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.LinkedList;
 
 public class Game implements Serializable{
 
@@ -11,10 +12,10 @@ public class Game implements Serializable{
 	private SaveLoadBundle slb;
 	private Checker checker;
 	private boolean isWhiteTurn = true;
-	
+
 	private static Scanner q = new Scanner(System.in);
 
-	
+
 	public boolean checkForSavedGame(){
 		return slb.existsSavedGame();
 	}
@@ -65,15 +66,15 @@ public class Game implements Serializable{
 		else member = board.getWhite();
 		checker.chgameState(member);
 	}
-	
+
 	public void run(){
 		while
 			(gs == GAME_STATE.NOTHING
-				|| gs == GAME_STATE.BLACK_IN_CHECK
-				|| gs == GAME_STATE.WHITE_IN_CHECK
-			)
+			|| gs == GAME_STATE.BLACK_IN_CHECK
+			|| gs == GAME_STATE.WHITE_IN_CHECK
+					)
 		{
-			MakeTurn();
+			while(!MakeTurn()){}
 			chGameState();
 			clear();
 			switchTurns();
@@ -85,24 +86,70 @@ public class Game implements Serializable{
 		else isWhiteTurn = true;
 	}
 
+	private boolean MakeTurn(){
 
-	private void MakeTurn(){
-
+		LinkedList<Square> v;
 		Color color;
-		if(isWhiteTurn) color = Color.WHITE;
-		else color = Color.BLACK;
+		// Compute all possible squares for King
+		if(isWhiteTurn){
+			v = checker.computeKingMoves(board.getWhite());
+			if(v.isEmpty()){
+				// Checkmate!
+				update_gs(GAME_STATE.WHITE_IN_CHECKMATE);
+			}
+			color = Color.WHITE;
+			if(gs == GAME_STATE.WHITE_IN_CHECK){
+				for(Square s : v) s.setHint();
+			}
+		}
+		else{
+			v = checker.computeKingMoves(board.getBlack());
+			color = Color.BLACK;
+			if(gs == GAME_STATE.BLACK_IN_CHECK){
+				for(Square s : v) s.setHint();
+			}
+		}
+		
+
 		System.out.println(board);
+		if(gs == GAME_STATE.BLACK_IN_CHECKMATE
+				|| gs == GAME_STATE.WHITE_IN_CHECKMATE){
+			System.out.println("\n\t\t.:: CHECKMATE ::.\n");
+			System.exit(0);
+		}
 		System.out.println("\n\t\t.:: "+color.getColorName()+"'S TURN ::.\n");
+
 
 		Square tmp2=takeInput(color);
 		Square tmpd2=takeDest(color);
+
 		if(isWhiteTurn){
-			if(gs == GAME_STATE.WHITE_IN_CHECK){
-				//
+			if(gs == GAME_STATE.WHITE_IN_CHECK
+					|| gs == GAME_STATE.BLACK_IN_CHECK
+			){
+				if(!(tmp2.getPiece_occupying() instanceof King)){
+					System.out.println("\n You're in Check!\n You can only move your King.");
+					return false;
+				}
+				
+
 			}
 		}
-		executeMove(board.getSquares()[tmp2.getX()][tmp2.getY()].getPiece_occupying(), board.getSquares()[tmpd2.getX()][tmpd2.getY()]);
-
+		
+		if((tmp2.getPiece_occupying() instanceof King) 
+				&& !v.contains(tmpd2)){
+			System.out.println("\n Wrong Move.");
+			return false;
+		}
+		
+		for(Square s : v) s.setNormal();
+		
+		if(!this.executeMove(
+				board.getSquares()[tmp2.getX()][tmp2.getY()]
+						.getPiece_occupying(),
+				board.getSquares()[tmpd2.getX()][tmpd2.getY()]))
+			return false;
+		return true;
 
 	}
 
@@ -134,7 +181,7 @@ public class Game implements Serializable{
 			return takeInput(color);
 		}
 		if(board.getSquares()[input1.getX()][input1.getY()].getPiece_occupying().color==color)
-			return input1;
+			return board.getSquares()[input1.getX()][input1.getY()];
 		else{
 			System.out.println("\n You can't move this piece");
 			return takeInput(color);
@@ -165,7 +212,7 @@ public class Game implements Serializable{
 			return takeInput(color);
 		}
 		Square input1=decode(input);
-		return input1;	
+		return board.getSquares()[input1.getX()][input1.getY()];	
 	}
 
 	private Square decode(String input) {
@@ -175,15 +222,15 @@ public class Game implements Serializable{
 
 	}
 
-	public void executeMove(Piece p, Square dest){
+	public boolean executeMove(Piece p, Square dest){
 		board.setInfos(board.getInfos() + (" Selection: "+p.color.getColorName()+" "+p.getClass().getSimpleName()+" on "+p.square.getIndex()+"\n"));
 		p.move=new Move(p.square, dest);
 		board.setInfos(board.getInfos() + ((" Destination: "+dest.getIndex())+"\n"));
 		if(!p.move.move(p, board)){
-			MakeTurn();
+			return false;
 		}
 		p.gmove.getDirection().clear();
-
+		return true;
 	}
 	public void clear() {
 		System.out.print("\033[H\033[2J");

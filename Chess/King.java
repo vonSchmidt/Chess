@@ -11,9 +11,8 @@ public class King extends Piece{
 	}
 	public GAME_STATE isInDanger(Board board, Team member){
 		// Check all threats
-		System.out.println(">>>>>>>>>>>>>> Checking for "+member.getColor()+" <<<<<<<<<<<<<<<");
-		boolean diagonalThreat = threatIn(new DiagonalDirection(), board);
 		
+		boolean diagonalThreat = threatIn(new DiagonalDirection(), board);
 		boolean straightThreat = threatIn(new StraightDirection(), board);
 		boolean AllDirThreat = threatIn(new AllDirection(), board);
 		boolean LShapedThreat = threatIn(new LshapedDirection(), board);
